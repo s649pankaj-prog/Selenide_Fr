@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Selenide_Fr</groupId>
+  <artifactId>Selenide_Fr</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+  <properties>
+    <maven.compiler.release>17</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!--  Versions are what I knew at my knowledge cutoff. Bump them to the latest on Maven Central.  -->
+    <selenide.version>7.9.4</selenide.version>
+    <cucumber.version>7.27.0</cucumber.version>
+    <testng.version>7.11.0</testng.version>
+    <rest-assured.version>5.5.5</rest-assured.version>
+    <assertj.version>3.27.3</assertj.version>
+    <slf4j.version>2.0.17</slf4j.version>
+    <surefire.version>3.5.3</surefire.version>
+    <!--  Override with -DsuiteXmlFile=... to run a different suite  -->
+    <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+  </properties>
+  <dependencies>
+    <!--  UI automation (brings Selenium WebDriver and driver management)  -->
+    <dependency>
+      <groupId>com.codeborne</groupId>
+      <artifactId>selenide</artifactId>
+      <version>${selenide.version}</version>
+<!--      <scope>test</scope>-->
+    </dependency>
+    <!--  BDD: step definitions, TestNG runner, dependency injection between steps  -->
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-java</artifactId>
+      <version>${cucumber.version}</version>
+<!--      <scope>test</scope>-->
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-testng</artifactId>
+      <version>${cucumber.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>${cucumber.version}</version>
+<!--      <scope>test</scope>-->
+    </dependency>
+    <!--  Test runner  -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+<!--      <scope>test</scope>-->
+    </dependency>
+    <!--  API testing (used from Day 3)  -->
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${rest-assured.version}</version>
+<!--      <scope>test</scope>-->
+    </dependency>
+    <!--  Assertions for non-UI checks (API responses, data)  -->
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>${assertj.version}</version>
+<!--      <scope>test</scope>-->
+    </dependency>
+    <!--  Temporary simple logging binding. Replaced by Logback on Day 4.  -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-simple</artifactId>
+      <version>${slf4j.version}</version>
+<!--      <scope>test</scope>-->
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.11.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.11.0</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.11.0</version>
+      <scope>compile</scope>
+    </dependency>
+  </dependencies>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire.version}</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+          </suiteXmlFiles>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
